@@ -1,8 +1,8 @@
 /* File to define all our fonts. */
 
 @font-face {
-    font-family: "VT323";
-    src:
-        local("VT323"),
-        url("./VT323.ttf") format("truetype");
+  font-family: "VT323";
+  src:
+    local("VT323"),
+    url("./VT323.ttf") format("truetype");
 }
