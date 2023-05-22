@@ -6,9 +6,30 @@ import '../common-styles/headers.css'
 import '../common-styles/link.css'
 
 /**
+ * Gets the text for the play button from the specified status.
+ * @param {string|null} status The current status.
+ * @returns {string}
+ */
+function getPlayTextFromStatus (status) {
+  switch (status) {
+    case null:
+      return 'Play'
+    case 'playing':
+      return 'Continue'
+    case 'completed':
+      return 'Play Again'
+    default:
+      throw new Error('Unrecognized play status')
+  }
+}
+
+/**
  * Landing page.
  */
 export default function Landing () {
+  const status = window.localStorage.getItem('status')
+  const playText = getPlayTextFromStatus(status)
+
   return (
     <article id='landing-main'>
       <header id='landing-header'>
@@ -19,8 +40,7 @@ export default function Landing () {
         learned to escape?
       </p>
       <nav id='landing-nav'>
-        <Link to='/play' className='nav-link'>Begin</Link>
-        <Link to='/continue' className='nav-link'>Continue</Link>
+        <Link to='/play' className='nav-link'>{playText}</Link>
         <Link to='/about' className='nav-link'>About</Link>
       </nav>
       <footer id='landing-footer'>
