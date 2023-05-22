@@ -1,0 +1,11 @@
+button {
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  font: inherit;
+
+  display: block;
+}
+button:hover {
+  cursor: pointer;
+}

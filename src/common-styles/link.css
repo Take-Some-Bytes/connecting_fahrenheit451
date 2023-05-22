@@ -1,0 +1,16 @@
+.nav-link {
+  color: inherit;
+  font-size: 1.2rem;
+  text-decoration: underline;
+
+  margin: 0.2rem;
+  display: block;
+}
+.nav-link::before {
+  content: '\000A0\0202F';
+
+  display: inline-block;
+}
+.nav-link:hover::before {
+  content: '>\0202F';
+}

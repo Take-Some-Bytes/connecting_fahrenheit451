@@ -1,0 +1,11 @@
+#landing-main {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  text-align: center;
+}
