@@ -40,12 +40,12 @@ export default function Landing () {
         learned to escape?
       </p>
       <nav id='landing-nav'>
-        <Link to='/play' className='nav-link'>{playText}</Link>
-        <Link to='/about' className='nav-link'>About</Link>
+        <Link to='/play' className='internal-link'>{playText}</Link>
+        <Link to='/about' className='internal-link'>About</Link>
       </nav>
       <footer id='landing-footer'>
-        Copyright (c) 2023 Haoting (Horton) Cheng. Licensed under
-        the <a href='https://www.gnu.org/licenses/agpl-3.0-standalone.html'>AGPL-3.0</a>.
+        Copyright (c) 2023 Haoting (Horton) Cheng. Licensed under the&nbsp;
+        <a href='https://www.gnu.org/licenses/agpl-3.0-standalone.html' className='external-link'>AGPL-3.0</a>.
       </footer>
     </article>
   )
