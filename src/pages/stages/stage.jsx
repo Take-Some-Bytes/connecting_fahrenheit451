@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { CorrectModal, IncorrectModal } from './modals'
 
+import '../../common-styles/button.css'
 import '../../common-styles/link.css'
 
 import './stage.css'
