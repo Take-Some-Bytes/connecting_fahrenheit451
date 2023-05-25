@@ -1,0 +1,8 @@
+.poem-text {
+  margin: 1rem auto 0;
+  padding: 0.6rem;
+  border: 0.3rem double rgb(250, 250, 250);
+  width: max-content;
+
+  font-style: italic;
+}

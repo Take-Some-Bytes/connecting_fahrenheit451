@@ -11,9 +11,10 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
-import Root from './root.jsx'
-import Landing from './pages/landing.jsx'
-import ErrorPage from './pages/error.jsx'
+import Root from './root'
+import Landing from './pages/landing'
+import ErrorPage from './pages/error'
+import Play from './pages/play'
 
 import './main.css'
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   >
     <Route errorElement={<ErrorPage />}>
       <Route index element={<Landing />} />
+      <Route path='/play' element={<Play />} />
     </Route>
   </Route>
 ))
