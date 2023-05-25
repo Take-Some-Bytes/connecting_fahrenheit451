@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "clean-build": "rm -rf dist"
+    "clean": "node -e \"require('fs').rmSync('./dist', { recursive: true, force: true })\""
   },
   "author": {
     "name": "Haoting (Horton) Cheng (Take-Some-Bytes)",
@@ -18,9 +18,11 @@
     "vite": "^4.3.8"
   },
   "dependencies": {
+    "debounce": "^1.2.1",
     "debug": "^4.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.11.2"
   },
   "private": true,
