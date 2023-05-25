@@ -1,5 +1,8 @@
 #landing-main {
-  min-height: 100vh;
+  /* The parent should be display: flex; we want to fill up the whole screen */
+  flex: 1;
+
+  padding: 0.2rem;
 
   display: flex;
   flex-direction: column;

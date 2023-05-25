@@ -1,5 +1,5 @@
 #app-main {
-  width: 30rem;
-  min-height: 100vh;
-  margin: auto;
+  max-width: 32rem;
+
+  display: flex;
 }
