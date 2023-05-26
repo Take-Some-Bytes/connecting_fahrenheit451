@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 
 import { CorrectModal, IncorrectModal } from './modals'
+import AppearingContent from '../../util-components/appearingcontent'
+
+import { APS } from '../../constants'
 
 import '../../common-styles/button.css'
 import '../../common-styles/link.css'
@@ -22,7 +25,6 @@ import './stage.css'
 
 /**
  * @typedef {object} InteractiveStageProps
- * @prop {boolean} showButtons
  * @prop {VoidFunction} nextStage
  * @prop {VoidFunction} increaseMistakes
  * @prop {Array<Button>} buttons
@@ -57,12 +59,18 @@ export function Stage (props) {
  * @param {React.PropsWithChildren<InteractiveStageProps>} props
  */
 export function InteractiveStage (props) {
+  const [showButtons, setShowButtons] = useState(false)
   const [showRight, setShowRight] = useState(false)
   const [showWrong, setShowWrong] = useState(false)
 
   function nextStage () {
     setShowRight(false)
     props.nextStage()
+  }
+  function onComplete () {
+    setTimeout(() => {
+      setShowButtons(true)
+    }, 2000)
   }
 
   const buttons = (
@@ -87,8 +95,10 @@ export function InteractiveStage (props) {
 
   return (
     <>
-      {props.children}
-      {props.showButtons && buttons}
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete}>
+        {props.children}
+      </AppearingContent>
+      {showButtons && buttons}
       <CorrectModal isOpen={showRight} nextStage={nextStage} />
       <IncorrectModal isOpen={showWrong} onClose={() => setShowWrong(false)} />
     </>
