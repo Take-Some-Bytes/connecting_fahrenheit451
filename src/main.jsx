@@ -13,8 +13,9 @@ import {
 
 import Root from './root'
 import Landing from './pages/landing'
-import ErrorPage from './pages/error'
 import Play from './pages/play'
+import About from './pages/about'
+import ErrorPage from './pages/error'
 
 import './main.css'
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route errorElement={<ErrorPage />}>
       <Route index element={<Landing />} />
       <Route path='/play' element={<Play />} />
+      <Route path='/about' element={<About />} />
     </Route>
   </Route>
 ), { basename: '/connecting_fahrenheit451' })
