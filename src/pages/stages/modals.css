@@ -4,9 +4,8 @@
 
   position: relative;
   padding: 1rem;
+  margin: 1rem;
   overflow: hidden;
-
-  max-width: calc(var(--vw) * 40);
 
   box-sizing: content-box;
 }
