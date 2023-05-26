@@ -30,7 +30,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path='/play' element={<Play />} />
     </Route>
   </Route>
-))
+), { basename: '/connecting_fahrenheit451' })
 
 root.render(
   <React.StrictMode>
