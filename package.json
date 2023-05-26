@@ -1,6 +1,6 @@
 {
   "name": "connecting_fahrenheit451",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Connecting Fahrenheit 451 to poetry.",
   "scripts": {
     "dev": "vite",
