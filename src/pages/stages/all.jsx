@@ -55,11 +55,11 @@ export function Fail () {
 
   return (
     <>
-      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='a0'>
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='aa1'>
         You're about to note that down, when suddenly, Ms. Robinson stands up.
         <br />
         <br />
-        "That's it. Get out," she said firmly.
+        "That's it. Get out," she says firmly.
         <br />
         <br />
         You walk out the door.
@@ -76,8 +76,8 @@ export function Intro1 (props) {
   const { showContinue, nextStage, onAppearingContentComplete } = props
 
   return (
-    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage} key='s1'>
-      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='a1'>
+    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa2'>
         A loud sound wakes you up from your comfortable nap. Still half-asleep,
         you open your eyes to find that you're sitting at a table. A whiteboard
         table, in fact. In front of you there's a piece of paper, with what looks
@@ -99,7 +99,7 @@ export function Intro2 (props) {
 
   return (
     <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
-      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='a2'>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa3'>
         ...Ms. Robinson staring down at you.
         <br />
         <br />
