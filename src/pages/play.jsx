@@ -3,7 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { Stage } from './stages/stage'
 import StageView from './stages/stageview'
 
-import { Fail, Intro1, Intro2, Perspective } from './stages/all'
+import {
+  Fail,
+  Intro1,
+  Intro2,
+  Perspective,
+  Segregation,
+  Metaphor,
+  RealizeOppression,
+  RealizeChange
+} from './stages/all'
 
 import { GameData, getGameData, saveGameData } from '../gamedata'
 import { MAX_MISTAKES } from '../constants'
@@ -50,6 +59,10 @@ export default function Play () {
         <Intro1 showContinue={showContinue} nextStage={nextStage} onAppearingContentComplete={onComplete} />
         <Intro2 showContinue={showContinue} nextStage={nextStage} onAppearingContentComplete={onComplete} />
         <Perspective nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Segregation nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Metaphor nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <RealizeOppression nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <RealizeChange nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <Stage>
           The end!
         </Stage>

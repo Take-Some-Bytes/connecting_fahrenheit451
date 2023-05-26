@@ -5,7 +5,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { InteractiveStage, Stage } from './stage'
+import { Stage } from './stage'
 import AppearingContent from '../../util-components/appearingcontent'
 
 import { clearGameData } from '../../gamedata'
@@ -14,6 +14,8 @@ import { APS } from '../../constants'
 import '../../common-styles/link.css'
 import './stage.css'
 import './all.css'
+
+export * from './analysis'
 
 /**
  * @typedef {object} StageProps
@@ -115,52 +117,5 @@ export function Intro2 (props) {
         You sigh. Another poem to analyze. Better get on it.
       </AppearingContent>
     </Stage>
-  )
-}
-
-/**
- * @param {InteractionStageProps} props
- */
-export function Perspective (props) {
-  const [showButtons, setShowButtons] = useState(false)
-
-  function onComplete () {
-    setTimeout(() => {
-      setShowButtons(true)
-    }, 2000)
-  }
-
-  return (
-    <InteractiveStage
-      showButtons={showButtons}
-      nextStage={props.nextStage}
-      increaseMistakes={props.increaseMistakes}
-      buttons={[
-        { content: 'These lines reveal that the speaker has eyes.' },
-        { content: 'These lines reveal that the speaker is looking at the world.' },
-        { content: 'These lines reveal that the speaker is African-American.', correct: true }
-      ]}
-      key='is1'
-    >
-      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='a3'>
-        You read the poem, looking for thematic elements you can discuss in whatever
-        Ms. Robinson throws at you next &mdash; probably a paragraph. You notice as well
-        that there's a few pieces of scrap paper in front of you, probably for your notes.
-
-        <br />
-        <br />
-
-        On your first read-through, some lines immediately stand out to you.
-
-        <p className='poem-text'>
-          I look at the world<br />
-          From awakening eyes in a black face—<br />
-          ...<br />
-          I look then at the silly walls<br />
-          Through dark eyes in a dark face—<br />
-          ...<br />
-        </p>
-      </AppearingContent>
-    </InteractiveStage>
   )
 }
