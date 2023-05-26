@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { Stage } from './stages/stage'
 import StageView from './stages/stageview'
 
-import { Intro1, Intro2, Perspective } from './stages/all'
+import { Fail, Intro1, Intro2, Perspective } from './stages/all'
 
 import { GameData, getGameData, saveGameData } from '../gamedata'
+import { MAX_MISTAKES } from '../constants'
 
 import './play.css'
 
@@ -33,6 +34,15 @@ export default function Play () {
   useEffect(() => {
     saveGameData(state)
   }, [state])
+
+  if (state.totalMistakes > MAX_MISTAKES) {
+    // Oops. You failed.
+    return (
+      <article id='play-main'>
+        <Fail />
+      </article>
+    )
+  }
 
   return (
     <article id='play-main'>

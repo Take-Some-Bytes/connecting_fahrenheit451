@@ -3,10 +3,12 @@
  */
 
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { InteractiveStage, Stage } from './stage'
 import AppearingContent from '../../util-components/appearingcontent'
 
+import { clearGameData } from '../../gamedata'
 import { APS } from '../../constants'
 
 import '../../common-styles/link.css'
@@ -26,6 +28,44 @@ import './all.css'
  * @prop {VoidFunction} increaseMistakes
  */
 
+/**
+ * You're a failure. Go back to the main page.
+ */
+export function Fail () {
+  const [showBack, setShowBack] = useState(false)
+  const navigate = useNavigate()
+
+  function onComplete () {
+    setShowBack(true)
+  }
+  function onGoBack () {
+    clearGameData()
+    navigate('/')
+  }
+
+  const back = (
+    <div className='stage__button-container'>
+      <button className='internal-link stage__button' onClick={onGoBack}>
+        Back to menu
+      </button>
+    </div>
+  )
+
+  return (
+    <>
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='a0'>
+        You're about to note that down, when suddenly, Ms. Robinson stands up.
+        <br />
+        <br />
+        "That's it. Get out," she said firmly.
+        <br />
+        <br />
+        You walk out the door.
+      </AppearingContent>
+      {showBack && back}
+    </>
+  )
+}
 
 /**
  * @param {StageProps} props
