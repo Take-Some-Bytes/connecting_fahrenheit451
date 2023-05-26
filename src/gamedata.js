@@ -38,3 +38,12 @@ export function saveGameData (data) {
   window.localStorage.setItem('save', JSON.stringify(data))
   window.localStorage.setItem('status', 'playing')
 }
+
+/**
+ * Clears game data from local storage.
+ */
+export function clearGameData () {
+  console.log('clearing game data')
+  window.localStorage.removeItem('save')
+  window.localStorage.setItem('status', 'completed')
+}

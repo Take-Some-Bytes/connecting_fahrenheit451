@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './landing.css'
 import '../common-styles/headers.css'
 import '../common-styles/link.css'
+import './landing.css'
 
 /**
  * Gets the text for the play button from the specified status.
@@ -32,18 +32,18 @@ export default function Landing () {
 
   return (
     <article id='landing-main'>
-      <header id='landing-header'>
+      <header>
         <h1>Connecting Fahrenheit 451</h1>
       </header>
       <p>
         You've read Fahrenheit 451 and connected a poem to it; now can you use what you've
         learned to escape?
       </p>
-      <nav id='landing-nav'>
+      <nav>
         <Link to='/play' className='internal-link'>{playText}</Link>
         <Link to='/about' className='internal-link'>About</Link>
       </nav>
-      <footer id='landing-footer'>
+      <footer>
         Copyright (c) 2023 Haoting (Horton) Cheng. Licensed under the&nbsp;
         <a href='https://www.gnu.org/licenses/agpl-3.0-standalone.html' className='external-link'>AGPL-3.0</a>.
       </footer>

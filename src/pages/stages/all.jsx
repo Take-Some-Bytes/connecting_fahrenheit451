@@ -3,16 +3,20 @@
  */
 
 import React, { useState } from 'react'
-import Modal from 'react-modal'
+import { useNavigate } from 'react-router-dom'
 
-import { InteractiveStage, Stage } from './stage'
+import { Stage } from './stage'
 import AppearingContent from '../../util-components/appearingcontent'
 
+import { clearGameData } from '../../gamedata'
 import { APS } from '../../constants'
 
 import '../../common-styles/link.css'
 import './stage.css'
 import './all.css'
+
+export * from './analysis'
+export * from './connect'
 
 /**
  * @typedef {object} StageProps
@@ -27,7 +31,44 @@ import './all.css'
  * @prop {VoidFunction} increaseMistakes
  */
 
-Modal.setAppElement(document.getElementById('root'))
+/**
+ * You're a failure. Go back to the main page.
+ */
+export function Fail () {
+  const [showBack, setShowBack] = useState(false)
+  const navigate = useNavigate()
+
+  function onComplete () {
+    setShowBack(true)
+  }
+  function onGoBack () {
+    clearGameData()
+    navigate('/')
+  }
+
+  const back = (
+    <div className='stage__button-container'>
+      <button className='internal-link stage__button' onClick={onGoBack}>
+        Back to menu
+      </button>
+    </div>
+  )
+
+  return (
+    <>
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='aa1'>
+        You're about to note that down, when suddenly, Ms. Robinson stands up.
+        <br />
+        <br />
+        "That's it. Get out," she says firmly.
+        <br />
+        <br />
+        You walk out the door.
+      </AppearingContent>
+      {showBack && back}
+    </>
+  )
+}
 
 /**
  * @param {StageProps} props
@@ -36,8 +77,8 @@ export function Intro1 (props) {
   const { showContinue, nextStage, onAppearingContentComplete } = props
 
   return (
-    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage} key='s1'>
-      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='a1'>
+    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa2'>
         A loud sound wakes you up from your comfortable nap. Still half-asleep,
         you open your eyes to find that you're sitting at a table. A whiteboard
         table, in fact. In front of you there's a piece of paper, with what looks
@@ -59,7 +100,7 @@ export function Intro2 (props) {
 
   return (
     <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
-      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='a2'>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa3'>
         ...Ms. Robinson staring down at you.
         <br />
         <br />
@@ -81,48 +122,71 @@ export function Intro2 (props) {
 }
 
 /**
- * @param {InteractionStageProps} props
+ * @param {StageProps} props
  */
-export function Perspective (props) {
-  const [showButtons, setShowButtons] = useState(false)
-
-  function onComplete () {
-    setTimeout(() => {
-      setShowButtons(true)
-    }, 2000)
-  }
+export function Intro3 (props) {
+  const { showContinue, nextStage, onAppearingContentComplete } = props
 
   return (
-    <InteractiveStage
-      showButtons={showButtons}
-      nextStage={props.nextStage}
-      increaseMistakes={props.increaseMistakes}
-      buttons={[
-        { content: 'These lines reveal that the speaker has eyes.' },
-        { content: 'These lines reveal that the speaker is looking at the world.' },
-        { content: 'These lines reveal that the speaker is African-American.', correct: true }
-      ]}
-      key='is1'
-    >
-      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='a3'>
-        You read the poem, looking for thematic elements you can discuss in whatever
-        Ms. Robinson throws at you next &mdash; probably a paragraph. You notice as well
-        that there's a few pieces of scrap paper in front of you, probably for your notes.
-
+    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa4'>
+        After you finish writing all your thoughts down, you put down your pencil
+        and stretch briefly. Before you manage to start working on your paragraph,
+        however, you notice Ms. Robinson standing in front of you.
         <br />
         <br />
+        "Very good. Now, I want you to connect that poem with the novel you studied
+        earlier this semester," Ms. Robinson says. She then walks back to her desk.
+        <br />
+        <br />
+        You sigh again. You have to <i>connect</i> a poem to a novel? Better get
+        thinking, you hear yourself say.
+      </AppearingContent>
+    </Stage>
+  )
+}
 
-        On your first read-through, some lines immediately stand out to you.
+/**
+ * @param {{ totalMistakes: number }} props
+ */
+export function Conclusion (props) {
+  const [showButtons, setShowButtons] = useState(false)
+  const navigate = useNavigate()
 
+  function onComplete () {
+    setShowButtons(true)
+  }
+  function onClick () {
+    clearGameData()
+    navigate('/')
+  }
+
+  const buttons = (
+    <div className='stage__button-container'>
+      <button className='stage__button internal-link' onClick={onClick}>
+        Back to menu
+      </button>
+    </div>
+  )
+
+  return (
+    <Stage>
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='aa4'>
+        You finish writing down all of the connections. You sigh, thinking about
+        how big your project will have to be in order to present all of this. Then,
+        you feel someone looking awkwardly over your shoulder.
+        <br />
+        <br />
+        "Good," says Ms. Robinson, satisfied. "I think that's enough work for today.
+        You're free to go."
+        <br />
+        <br />
+        You walk out the door, waving goodbye to Ms. Robinson.
         <p className='poem-text'>
-          I look at the world<br />
-          From awakening eyes in a black face—<br />
-          ...<br />
-          I look then at the silly walls<br />
-          Through dark eyes in a dark face—<br />
-          ...<br />
+          Completed with {props.totalMistakes} mistake(s).
         </p>
       </AppearingContent>
-    </InteractiveStage>
+      {showButtons && buttons}
+    </Stage>
   )
 }

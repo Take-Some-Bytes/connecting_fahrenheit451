@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 
 import { CorrectModal, IncorrectModal } from './modals'
+import AppearingContent from '../../util-components/appearingcontent'
+
+import { APS } from '../../constants'
 
 import '../../common-styles/button.css'
 import '../../common-styles/link.css'
@@ -22,11 +25,23 @@ import './stage.css'
 
 /**
  * @typedef {object} InteractiveStageProps
- * @prop {boolean} showButtons
+ * @prop {boolean} randomize
  * @prop {VoidFunction} nextStage
  * @prop {VoidFunction} increaseMistakes
  * @prop {Array<Button>} buttons
  */
+
+/**
+ * Shuffle an array.
+ * @param {Array<T>} array
+ * @template T
+ */
+function shuffleArray (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+}
 
 /**
  * A single stage of the game.
@@ -57,6 +72,7 @@ export function Stage (props) {
  * @param {React.PropsWithChildren<InteractiveStageProps>} props
  */
 export function InteractiveStage (props) {
+  const [showButtons, setShowButtons] = useState(false)
   const [showRight, setShowRight] = useState(false)
   const [showWrong, setShowWrong] = useState(false)
 
@@ -64,31 +80,44 @@ export function InteractiveStage (props) {
     setShowRight(false)
     props.nextStage()
   }
+  function onComplete () {
+    setTimeout(() => {
+      setShowButtons(true)
+    }, 2000)
+  }
 
-  const buttons = (
+  const buttons = props.buttons.map((b, i) => {
+    let func = () => {
+      setShowWrong(true)
+      props.increaseMistakes()
+    }
+    if (b.correct) {
+      func = () => setShowRight(true)
+    }
+
+    return (
+      <button className='interactive-stage__button' key={i} onClick={func}>
+        {b.content}
+      </button>
+    )
+  })
+
+  if (props.randomize) {
+    shuffleArray(buttons)
+  }
+
+  const buttonsJsx = (
     <div className='interactive-stage__button-container'>
-      {props.buttons.map((b, i) => {
-        let func = () => {
-          setShowWrong(true)
-          props.increaseMistakes()
-        }
-        if (b.correct) {
-          func = () => setShowRight(true)
-        }
-
-        return (
-          <button className='interactive-stage__button' key={i} onClick={func}>
-            {b.content}
-          </button>
-        )
-      })}
+      {buttons}
     </div>
   )
 
   return (
     <>
-      {props.children}
-      {props.showButtons && buttons}
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete}>
+        {props.children}
+      </AppearingContent>
+      {showButtons && buttonsJsx}
       <CorrectModal isOpen={showRight} nextStage={nextStage} />
       <IncorrectModal isOpen={showWrong} onClose={() => setShowWrong(false)} />
     </>

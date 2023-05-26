@@ -18,6 +18,9 @@ import './modals.css'
  * @prop {boolean} isOpen
  * @prop {VoidFunction} onClose
  */
+
+ReactModal.setAppElement(document.getElementById('root'))
+
 /**
  * A modal which should be shown if the player picked correctly.
  * @param {CorrectModalProps} props
