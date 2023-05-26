@@ -16,6 +16,7 @@ import './stage.css'
 import './all.css'
 
 export * from './analysis'
+export * from './connect'
 
 /**
  * @typedef {object} StageProps
@@ -115,6 +116,31 @@ export function Intro2 (props) {
         <br />
         <br />
         You sigh. Another poem to analyze. Better get on it.
+      </AppearingContent>
+    </Stage>
+  )
+}
+
+/**
+ * @param {StageProps} props
+ */
+export function Intro3 (props) {
+  const { showContinue, nextStage, onAppearingContentComplete } = props
+
+  return (
+    <Stage showSkip={!showContinue} showContinue={showContinue} nextStage={nextStage}>
+      <AppearingContent lettersPerSecond={APS} onComplete={onAppearingContentComplete} key='aa4'>
+        After you finish writing all your thoughts down, you put down your pencil
+        and stretch briefly. Before you manage to start working on your paragraph,
+        however, you notice Ms. Robinson standing in front of you.
+        <br />
+        <br />
+        "Very good. Now, I want you to connect that poem with the novel you studied
+        earlier this semester," Ms. Robinson says. She then walks back to her desk.
+        <br />
+        <br />
+        You sigh again. You have to <i>connect</i> a poem to a novel? Better get
+        thinking, you hear yourself say.
       </AppearingContent>
     </Stage>
   )

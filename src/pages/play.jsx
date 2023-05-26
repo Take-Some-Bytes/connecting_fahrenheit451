@@ -7,11 +7,19 @@ import {
   Fail,
   Intro1,
   Intro2,
+  Intro3,
   Perspective,
   Segregation,
   Metaphor,
   RealizeOppression,
-  RealizeChange
+  RealizeChange,
+  Oppressions1,
+  Oppressions2,
+  Oppressions3,
+  Acknowledge,
+  ChangeIsPossible1,
+  ChangeIsPossible2,
+  ChangeIsPossible3
 } from './stages/all'
 
 import { GameData, getGameData, saveGameData } from '../gamedata'
@@ -63,6 +71,14 @@ export default function Play () {
         <Metaphor nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <RealizeOppression nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <RealizeChange nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Intro3 showContinue={showContinue} nextStage={nextStage} onAppearingContentComplete={onComplete} />
+        <Oppressions1 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Oppressions2 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Oppressions3 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Acknowledge nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <ChangeIsPossible1 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <ChangeIsPossible2 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <ChangeIsPossible3 nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <Stage>
           The end!
         </Stage>
