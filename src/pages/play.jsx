@@ -7,6 +7,8 @@ import { Intro1, Intro2, Perspective } from './stages/all'
 
 import { GameData, getGameData, saveGameData } from '../gamedata'
 
+import './play.css'
+
 export default function Play () {
   const [state, setState] = useState(getGameData() || new GameData(0, 0))
   const [showContinue, setShowContinue] = useState(false)
