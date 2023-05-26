@@ -19,7 +19,8 @@ import {
   Acknowledge,
   ChangeIsPossible1,
   ChangeIsPossible2,
-  ChangeIsPossible3
+  ChangeIsPossible3,
+  Conclusion
 } from './stages/all'
 
 import { GameData, getGameData, saveGameData } from '../gamedata'
@@ -79,6 +80,7 @@ export default function Play () {
         <ChangeIsPossible1 nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <ChangeIsPossible2 nextStage={nextStage} increaseMistakes={increaseMistakes} />
         <ChangeIsPossible3 nextStage={nextStage} increaseMistakes={increaseMistakes} />
+        <Conclusion totalMistakes={state.totalMistakes} />
         <Stage>
           The end!
         </Stage>

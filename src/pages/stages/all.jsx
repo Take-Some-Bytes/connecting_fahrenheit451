@@ -145,3 +145,48 @@ export function Intro3 (props) {
     </Stage>
   )
 }
+
+/**
+ * @param {{ totalMistakes: number }} props
+ */
+export function Conclusion (props) {
+  const [showButtons, setShowButtons] = useState(false)
+  const navigate = useNavigate()
+
+  function onComplete () {
+    setShowButtons(true)
+  }
+  function onClick () {
+    clearGameData()
+    navigate('/')
+  }
+
+  const buttons = (
+    <div className='stage__button-container'>
+      <button className='stage__button internal-link' onClick={onClick}>
+        Back to menu
+      </button>
+    </div>
+  )
+
+  return (
+    <Stage>
+      <AppearingContent lettersPerSecond={APS} onComplete={onComplete} key='aa4'>
+        You finish writing down all of the connections. You sigh, thinking about
+        how big your project will have to be in order to present all of this. Then,
+        you feel someone looking awkwardly over your shoulder.
+        <br />
+        <br />
+        "Good," says Ms. Robinson, satisfied. "I think that's enough work for today.
+        You're free to go."
+        <br />
+        <br />
+        You walk out the door, waving goodbye to Ms. Robinson.
+        <p className='poem-text'>
+          Completed with {props.totalMistakes} mistake(s).
+        </p>
+      </AppearingContent>
+      {showButtons && buttons}
+    </Stage>
+  )
+}
