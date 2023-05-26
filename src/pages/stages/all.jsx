@@ -3,7 +3,6 @@
  */
 
 import React, { useState } from 'react'
-import Modal from 'react-modal'
 
 import { InteractiveStage, Stage } from './stage'
 import AppearingContent from '../../util-components/appearingcontent'
@@ -27,7 +26,6 @@ import './all.css'
  * @prop {VoidFunction} increaseMistakes
  */
 
-Modal.setAppElement(document.getElementById('root'))
 
 /**
  * @param {StageProps} props
