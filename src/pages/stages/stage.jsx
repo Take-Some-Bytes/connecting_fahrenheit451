@@ -25,10 +25,23 @@ import './stage.css'
 
 /**
  * @typedef {object} InteractiveStageProps
+ * @prop {boolean} randomize
  * @prop {VoidFunction} nextStage
  * @prop {VoidFunction} increaseMistakes
  * @prop {Array<Button>} buttons
  */
+
+/**
+ * Shuffle an array.
+ * @param {Array<T>} array
+ * @template T
+ */
+function shuffleArray (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+}
 
 /**
  * A single stage of the game.
@@ -73,23 +86,29 @@ export function InteractiveStage (props) {
     }, 2000)
   }
 
-  const buttons = (
-    <div className='interactive-stage__button-container'>
-      {props.buttons.map((b, i) => {
-        let func = () => {
-          setShowWrong(true)
-          props.increaseMistakes()
-        }
-        if (b.correct) {
-          func = () => setShowRight(true)
-        }
+  const buttons = props.buttons.map((b, i) => {
+    let func = () => {
+      setShowWrong(true)
+      props.increaseMistakes()
+    }
+    if (b.correct) {
+      func = () => setShowRight(true)
+    }
 
-        return (
-          <button className='interactive-stage__button' key={i} onClick={func}>
-            {b.content}
-          </button>
-        )
-      })}
+    return (
+      <button className='interactive-stage__button' key={i} onClick={func}>
+        {b.content}
+      </button>
+    )
+  })
+
+  if (props.randomize) {
+    shuffleArray(buttons)
+  }
+
+  const buttonsJsx = (
+    <div className='interactive-stage__button-container'>
+      {buttons}
     </div>
   )
 
@@ -98,7 +117,7 @@ export function InteractiveStage (props) {
       <AppearingContent lettersPerSecond={APS} onComplete={onComplete}>
         {props.children}
       </AppearingContent>
-      {showButtons && buttons}
+      {showButtons && buttonsJsx}
       <CorrectModal isOpen={showRight} nextStage={nextStage} />
       <IncorrectModal isOpen={showWrong} onClose={() => setShowWrong(false)} />
     </>

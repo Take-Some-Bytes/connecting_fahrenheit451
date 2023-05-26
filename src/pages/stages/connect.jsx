@@ -44,6 +44,7 @@ export function Oppressions2 (props) {
         { content: 'Faber\'s talk to Montag reveals a lot of things.', correct: true }
       ]}
       key='cis2'
+      randomize
     >
       How do you know that books, freedom of thought and expression, and differences
       are suppressed in Fahrenheit 451 though? What reveals that?
@@ -68,6 +69,7 @@ export function Oppressions3 (props) {
         { content: 'Clarisse is different, and no one seems to like that.', correct: true }
       ]}
       key='cis3'
+      randomize
     >
       You wonder if there are any other times where this is revealed.
     </InteractiveStage>
@@ -88,6 +90,7 @@ export function Acknowledge (props) {
         { content: 'Montag realizes this after talking with Faber.', correct: true }
       ]}
       key='cis4'
+      randomize
     >
       After making that first connection, you struggle slightly making another
       one. But suddenly, you get one. Both Montag and the speaker eventually realize
@@ -110,6 +113,7 @@ export function ChangeIsPossible1 (props) {
         { content: 'Both the speaker and some characters in Fahrenheit 451 realize that change is possible', correct: true }
       ]}
       key='cis5'
+      randomize
     >
       You want to make one more connection. However, it seems like there are no
       more connections to be made.
@@ -121,6 +125,7 @@ export function ChangeIsPossible1 (props) {
       <p className='poem-text'>
         <i>BE THE CHANGE</i>
       </p>
+      <br />
       You then get it. It's a bit of a stretch, but the connection's there.
     </InteractiveStage>
   )
@@ -140,6 +145,7 @@ export function ChangeIsPossible2 (props) {
         { content: '"I see that my own hands can make / The world that\'s in my mind."', correct: true }
       ]}
       key='cis6'
+      randomize
     >
       Where in "I look at the world" does this happen though?
     </InteractiveStage>
@@ -160,6 +166,7 @@ export function ChangeIsPossible3 (props) {
         { content: 'Montag\'s thinking and Granger\'s belief that they can change things.', correct: true }
       ]}
       key='cis7'
+      randomize
     >
       You think you're done. Then you remember that you still need to find where
       in Fahrenheit 451 proves this.

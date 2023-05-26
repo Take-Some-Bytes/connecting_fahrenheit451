@@ -22,6 +22,7 @@ export function Perspective (props) {
         { content: 'These lines reveal that the speaker is African-American.', correct: true }
       ]}
       key='ais1'
+      randomize
     >
       You read the poem, looking for thematic elements you can discuss in whatever
       Ms. Robinson throws at you next &mdash; probably a paragraph. You notice as well
@@ -58,6 +59,7 @@ export function Segregation (props) {
         { content: 'These lines reveal that the speaker faces segregation.', correct: true }
       ]}
       key='ais2'
+      randomize
     >
       After noting down the speaker's perspective, you jump back to the third,
       fourth, and fifth lines.
@@ -86,6 +88,7 @@ export function Metaphor (props) {
         { content: 'This is a metaphor comparing oppression to walls.', correct: true }
       ]}
       key='ais3'
+      randomize
     >
       Then, you realize that the speaker mentions walls and oppression quite a
       bit, and that this has a name.
@@ -115,6 +118,7 @@ export function RealizeOppression (props) {
         { content: 'They suggest that the speaker is finally seeing the problems in their world.', correct: true }
       ]}
       key='ais4'
+      randomize
     >
       Next, you are drawn into these lines. Both talk of eyes.
       <p className='poem-text'>
@@ -142,6 +146,7 @@ export function RealizeChange (props) {
         { content: 'It reveals that the speaker realizes change can happen.', correct: true }
       ]}
       key='ais5'
+      randomize
     >
       Finally, you look at the last stanza. You have a feeling that it's going to
       be very, very powerful.
